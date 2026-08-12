@@ -1,5 +1,5 @@
 @font-face {
-  font-family: 'Fraunces';
+  font-family: "Madimi One", sans-serif;
   src: local('Fraunces');
 }
 
@@ -48,6 +48,25 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+/* ADDED */
+body{
+  height: 100vh;
+  background: var(--font-body);
+
+}
+.sidebar{
+  position: left;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 250px;
+  background: var(--sidebar-color);
+}
+.sidebar .image-text img{
+  width: 40px;
+  border-radius: 6px;
 }
 
 /* ---------- Search bar ---------- */

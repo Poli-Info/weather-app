@@ -7,7 +7,7 @@
 <meta name="theme-color" content="#12203A">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="icons/icon-192.png">
-<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,19 +16,32 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div id="app">
-  <form id="search-form" class="search-row">
-    <input id="city-input" type="text" placeholder="Chercher une ville…" autocomplete="off" inputmode="search">
-    <button type="button" id="locate-btn" aria-label="Utiliser ma position">📍</button>
-  </form>
-  <div id="suggestions" class="suggestions"></div>
 
-  <div id="main-panel">
-    <div class="status-panel">Chargement…</div>
+  <!-- ADD -->
+  <nav class="sidebar">
+    <header>
+      <div class="image-text">
+        <span class="image">
+          <img src="icons/ufo.png" alt="logo"
+        </span>
+      </div>
+    </header>
+  </nav>
+
+  <div id="app">
+    <form id="search-form" class="search-row">
+      <input id="city-input" type="text" placeholder="Chercher une ville…" autocomplete="off" inputmode="search">
+      <button type="button" id="locate-btn" aria-label="Utiliser ma position">📍</button>
+    </form>
+    <div id="suggestions" class="suggestions"></div>
+
+    <div id="main-panel">
+      <div class="status-panel">Chargement…</div>
+    </div>
+
+    <div class="footer-note">Données Open-Meteo · fait pour tester</div>
   </div>
 
-  <div class="footer-note">Données Open-Meteo · fait pour tester</div>
-</div>
-<script src="app.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
