@@ -15,18 +15,75 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
 
-  <!-- ADD -->
+<body>
+  <!--------- Sidebar --------->
   <nav class="sidebar">
     <header>
       <div class="image-text">
         <span class="image">
-          <img src="icons/ufo.png" alt="logo"
+          <img src="icons/ufo.png" alt="logo">
         </span>
+        
+        <div class="text header-text">
+          <span class="name">PoliScop</span>
+          <span class="secondName">Around The World</span>
+        </div>
+      </div>
+          <img id="toggle" src="icons/caret-big-right.png" alt="slidebar">
+      <div class="menu-bar">
+        <div class="menu">
+          <ul>
+            <li class="search-box">
+              <img src="icons/search.png" alt="accueil">
+              <input id="search" type="search" placeholder="Rechercher...">
+            </li>
+          </ul>  
+          <ul class="menu-links">
+            <li class="nav-links">
+              <a href="#">
+                <img src="icons/home-alt-2.png" alt="accueil">
+                <span class="text text-nav">Accueil</span>
+              </a>
+            </li>
+            <li class="nav-links">
+              <a href="#">
+                <img src="icons/cloud-sun.png" alt="météo">
+                <span class="text text-nav">Météo</span>
+              </a>
+            </li>
+            <li class="nav-links">
+              <a href="#">
+                <img src="icons/compass-tool.png" alt="outils3">
+                <span class="text text-nav">Outils3</span>
+              </a>
+            </li>
+            <li class="nav-links">
+              <a href="#">
+                <img src="icons/compass-tool.png" alt="outils4">
+                <span class="text text-nav">Outils4</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bottom-content">
+          <li class="mode">
+            <div class="moon-sun">
+                <img class="moon" src="icons/moon-stars.png" alt="outils4">
+                <img class="sun" src="icons/sun.png" alt="outils4">
+            </div>
+            <span class="text mode-text">Bright Mode</span>
+            <div class="text toggle-switch">
+              <span class="switch"></span>
+            </div>
+            </li>
+
+        </div>
       </div>
     </header>
   </nav>
+  <!------- FIN Sidebar ------->
 
   <div id="app">
     <form id="search-form" class="search-row">

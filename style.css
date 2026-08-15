@@ -1,21 +1,29 @@
 @font-face {
   font-family: "Madimi One", sans-serif;
-  src: local('Fraunces');
+  src: local('Madimi One');
 }
 
 :root {
-  --navy: #12203A;
-  --navy-panel: #1B2E52;
-  --navy-panel-light: #223760;
-  --cloud: #F3F5F8;
-  --slate: #8DA0BC;
+  /* Couleurs */
+  --fond-navy: #12203A;
+  --fond2-navy-panel: #1B2E52;
+  --fond3-navy-panel-light: #223760;
+  --text-cloud: #F3F5F8;
+  --text2-slate: #8DA0BC;
   --gold: #E8A94C;
-  --teal: #2CA6A4;
+  --teal: #2c63a6;
   --danger: #E1654D;
+
+  /* design */
   --radius: 22px;
-  --font-display: 'Fraunces', Georgia, serif;
+  --transition1 : all 0.1s ease;
+  --transition2 : all 0.2s ease;
+  --transition3 : all 0.3s ease;
+
+  /* Typo */
   --font-body: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-mono: 'IBM Plex Mono', 'SF Mono', monospace;
+  --font-display: 'IBM Plex Mono', Georgia, serif;
+
 }
 
 * { box-sizing: border-box; }
@@ -24,8 +32,8 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  background: var(--navy);
-  color: var(--cloud);
+  background: var(--fond-navy);
+  color: var(--text-cloud);
   font-family: var(--font-body);
   -webkit-tap-highlight-color: transparent;
   overscroll-behavior: none;
@@ -38,10 +46,11 @@ body {
   min-height: 100vh;
   padding-top: env(safe-area-inset-top);
   padding-bottom: env(safe-area-inset-bottom);
+  transition: var(--transition3);
 }
 
 #app {
-  max-width: 480px;
+  max-width: 80%;
   margin: 0 auto;
   padding: 24px 20px 40px;
   min-height: 100vh;
@@ -50,24 +59,253 @@ body {
   gap: 20px;
 }
 
-/* ADDED */
-body{
-  height: 100vh;
-  background: var(--font-body);
 
+/*/ ======================================================
+    ====================== Sidebare ======================
+    ======================================================*/
+
+body.bright{
+  --fond-navy: #487fe6;
+  --fond2-navy-panel: #558df4;
+  --fond3-navy-panel-light: #70a0ff;
+  --text-cloud: #272728;
+  --text2-slate: #1f2530;
 }
-.sidebar{
-  position: left;
+
+/* sidebar */
+.sidebar{ /* corps du sidebar */
+  font-family: var(--font-display);
+  position: fixed;
   top: 0;
   left: 0;
   height: 100%;
   width: 250px;
-  background: var(--sidebar-color);
+  padding: 10px 14px;
+  background: var(--fond2-navy-panel);
+  transition: var(--transition1);
 }
-.sidebar .image-text img{
+
+.sidebar.close{
+  width: 75px;
+}
+
+.sidebar .text { /* En-tête du sidebar */
+  font-size: 16px;
+  font-weight: 500;
+  transition: var(--transition3);
+  white-space: nowrap;
+  opacity: 1;
+}
+
+.sidebar.close .text{
+  opacity: 0;
+}
+
+.sidebar .image-text img{ /* Icone de l'en-tête */
   width: 40px;
   border-radius: 6px;
 }
+
+.sidebar image{
+  min-width: 60px;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar .search-box{ /* recherche sidebar */
+  background: var(--fond3-navy-panel-light);
+}
+::placeholder{
+  color: var(--text-cloud);
+}
+
+.sidebar .menu-bar input{ /* recherche sidebar */
+  font-family: var(--font-display);
+  font-weight: 100;
+  font-size: 16px;
+  height: 100%;
+  width: 100%;
+  color: var(--text2-slate);
+  outline: none;
+  border: none;
+  border-radius: 6px;
+  background: var(--fond3-navy-panel-light);
+}
+
+.sidebar li{ /* lists */
+  height : 50px;
+  margin-top: 10px;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  border-radius: 6px;
+}
+
+.sidebar ul li{ /* list clicable */
+  margin-top: 10px;
+  margin-left: -40px;
+  font-family: var(--font-display);
+  list-style: none;
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  color: var(--text-cloud);
+}
+
+.sidebar li a{ /* List clicable */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  color: var(--text-cloud);
+  text-decoration: none;
+  border-radius: 6px;
+  transition: var(--transition2);
+}
+.sidebar li a:hover{
+  height: 100%;
+  background: var(--teal);
+}
+
+.sidebar .menu-bar{ /* ajustement des éléments de la list*/
+  height: calc(100% - 50px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.menu-bar .mode{
+  position: relative;
+  border-radius: 6px;
+  background: var(--fond3-navy-panel-light);
+}
+
+.menu-bar .mode .moon-sun{ /* Icone night mode*/
+  height: 50px;
+  width: 60px;
+  display: flex;
+  align-items: center;
+}
+
+
+.menu-bar .bottom-content .text{
+    margin-left: -10px;
+    transition: var(--transition1);
+}
+.menu-bar .bottom-content .moon-sun img{ /* Icone night mode*/
+  position: absolute;
+}
+.sidebar.close .mode  .moon-sun img{
+  opacity: 0;
+}
+
+.menu-bar .mode .moon{ /* Icone night mode*/
+  opacity: 0%;
+}
+
+.menu-bar .mode .toggle-switch{ /* Switch de l'Icone night mode*/
+  position: absolute;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-width: 60px;
+  cursor: pointer;
+}
+.sidebar.close .mode .toggle-switch{
+  opacity: 1;
+  right: 1px;
+}
+.toggle-switch .switch{ /* Switch de l'Icone night mode*/
+  position: relative;
+  margin-left: 50px;
+  height: 22px;
+  width: 44px;
+  border-radius: 625px;
+  background: var(--fond-navy);
+}
+
+.switch::before{ /* Switch de l'Icone night mode AVANT*/
+  content: '';
+  position: absolute;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  top : 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  background: var(--fond3-navy-panel-light);
+  transition: var(--transition3);
+}
+
+body.bright .switch::before{ /* Switch de l'Icone night mode AVANT*/
+  left: 25px;
+}
+
+
+.menu-bar .mode .sun{
+  opacity: 100%;
+}
+
+.sidebar .menu-bar img{ /* icons liste sidebar */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+/* ?????????
+.sidebar .menu-bar ul img{
+  size: 22px;
+}*/
+
+
+
+.sidebar .header{
+  position: relative;
+}
+/* vv ??? vv */
+.sidebar header .image-text{
+  display: flex;
+  align-items: center;
+
+}
+/* vv ??? vv */
+header .image-text .header-text{
+  display: flex;
+  flex-direction:  column;
+}
+/* vv ??? vv */
+.header-text .name{
+  font-weight: 400;
+}
+/* vv ??? vv */
+.header .secondName{
+  margin-top: -2px;
+}
+
+#toggle{ /* Icone flèche*/
+  position: absolute;
+  top: 5%;
+  right: -10px;
+  transform: translateY(-50%);
+  height: 25px;
+  width: 25px;
+  background: var(--fond3-navy-panel-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/*/ ======================================================
+    ==================== FIN Sidebare ====================
+    ======================================================*/
+
 
 /* ---------- Search bar ---------- */
 .search-row {
@@ -77,20 +315,20 @@ body{
 
 .search-row input {
   flex: 1;
-  background: var(--navy-panel);
+  background: var(--fond2-navy-panel);
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: 14px;
   padding: 12px 14px;
-  color: var(--cloud);
+  color: var(--text-cloud);
   font-family: var(--font-body);
   font-size: 15px;
 }
 
-.search-row input::placeholder { color: var(--slate); }
+.search-row input::placeholder { color: var(--text2-slate); }
 
 .search-row button, .locate-btn {
   background: var(--teal);
-  color: var(--navy);
+  color: var(--fond-navy);
   border: none;
   border-radius: 14px;
   padding: 12px 16px;
@@ -102,7 +340,7 @@ body{
 .locate-btn {
   background: transparent;
   border: 1px solid rgba(255,255,255,0.14);
-  color: var(--cloud);
+  color: var(--text-cloud);
   width: 44px;
   padding: 12px 0;
   font-size: 18px;
@@ -117,9 +355,9 @@ body{
 
 .suggestions button {
   text-align: left;
-  background: var(--navy-panel);
+  background: var(--fond2-navy-panel);
   border: 1px solid rgba(255,255,255,0.06);
-  color: var(--cloud);
+  color: var(--text-cloud);
   border-radius: 12px;
   padding: 10px 14px;
   font-family: var(--font-body);
@@ -127,7 +365,7 @@ body{
 }
 
 .suggestions button span {
-  color: var(--slate);
+  color: var(--text2-slate);
   font-size: 12px;
   margin-left: 6px;
 }
@@ -137,25 +375,25 @@ body{
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
 }
 
 .location-name {
   font-size: 13px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--slate);
+  color: var(--text2-slate);
 }
 
 .location-coords {
   font-size: 11px;
-  color: var(--slate);
+  color: var(--text2-slate);
   opacity: 0.7;
 }
 
 /* ---------- Hero reading ---------- */
 .hero {
-  background: linear-gradient(180deg, var(--navy-panel), var(--navy-panel-light));
+  background: linear-gradient(180deg, var(--fond2-navy-panel), var(--fond3-navy-panel-light));
   border-radius: var(--radius);
   padding: 28px 24px 22px;
   border: 1px solid rgba(255,255,255,0.06);
@@ -194,14 +432,14 @@ body{
 
 .condition-label {
   font-size: 16px;
-  color: var(--cloud);
+  color: var(--text-cloud);
   margin-top: 6px;
 }
 
 .feels-like {
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
   font-size: 12px;
-  color: var(--slate);
+  color: var(--text2-slate);
   margin-top: 4px;
 }
 
@@ -213,9 +451,9 @@ body{
 .horizon-labels {
   display: flex;
   justify-content: space-between;
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
   font-size: 11px;
-  color: var(--slate);
+  color: var(--text2-slate);
   margin-top: 4px;
 }
 
@@ -227,7 +465,7 @@ body{
 }
 
 .gauge-card {
-  background: var(--navy-panel);
+  background: var(--fond2-navy-panel);
   border-radius: 18px;
   border: 1px solid rgba(255,255,255,0.06);
   padding: 14px 8px 12px;
@@ -238,28 +476,28 @@ body{
 }
 
 .gauge-value {
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
   font-size: 15px;
   font-weight: 600;
   margin-top: 2px;
 }
 
 .gauge-label {
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
   font-size: 10px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--slate);
+  color: var(--text2-slate);
 }
 
 /* ---------- Status / empty / error ---------- */
 .status-panel {
-  background: var(--navy-panel);
+  background: var(--fond2-navy-panel);
   border-radius: var(--radius);
   padding: 32px 20px;
   text-align: center;
-  color: var(--slate);
-  font-family: var(--font-mono);
+  color: var(--text2-slate);
+  font-family: var(--font-display);
   font-size: 13px;
   border: 1px dashed rgba(255,255,255,0.12);
 }
@@ -269,9 +507,9 @@ body{
 /* ---------- Footer ---------- */
 .footer-note {
   text-align: center;
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
   font-size: 10px;
-  color: var(--slate);
+  color: var(--text2-slate);
   opacity: 0.6;
   margin-top: auto;
 }
